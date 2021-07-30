@@ -14,38 +14,21 @@
 .mynav p {
     text-align: center;
     font-size: 50px;
-    color: #fff;
+    color: black;
     letter-spacing: 2px;
     font-weight: bold;
     font-family:"Sulphur Point",sans-serif;
 }
 
-
-
-.mynav{
-   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/static/img/h1_hero.jpg);
-   height: 550px;
-   background-size: cover;
-
-  }
-
-
 .navbar .navbar-brand:hover{
-    color:#fff;
+    color:greenyellow;
 }
-
 .navbar .navbar-brand{
-    margin-top: 30px;
-    color: red;
-    letter-spacing: 2px;
-    font-weight: bolder;
-    padding-left: 10%;
-    font-size:2.3em;
+    color:white;
+    font-family: "Sacramento",cursive;
+    font-size: 26px;
 }
 
-.navbar .navbar-nav{
-    margin-top: 30px;
-}
 
 .navbar .nav-item a:hover{
     color: orange !important;
@@ -54,7 +37,7 @@
 }
 .navbar .nav-item a{
     font-size: 20px;
-    color: #fff !important;
+    color: white !important;
     letter-spacing: 1px;
     
     

@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Login</title>
-</head>
-<body>
-	<h1>LogIN Page</h1>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Log In|Flask-Blog{% endblock %}
+
+{% block head %}
+    {{ super() }}
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+{% block content %}
+  <section class="features">
+    <h1>LogIn</h1>
+    <div class="row">
+      <div class="container my-3">
+        <div class="col-md-1 col-lg-6 col-xl-4" style="margin-left: 34%;">
+          <form action="/create_post" method="POST">
+            <div class="mb-3">
+              <label for="title" class="form-label">Username</label>
+              <input type="text" class="form-control" placeholder="Enter Username or Email" name="username" id="username"> 
+            </div>
+            <div class="mb-3">
+              <label for="content" class="form-label">Password</label>
+              <input type="text" class="form-control" placeholder="Enter Password" name="password" id="password">
+            </div>
+            <a href="#!" class="text-body">Forgot password?</a>
+           
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="button" class="btn btn-primary btn-lg"style="padding-left: 2.5rem; padding-right: 2.5rem;">LOGIN</button>
+              <p class="small fw-bold mt-2 pt-1 mb-0">Do you have an account?<a href="/signUp"class="link-danger">SignUp</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

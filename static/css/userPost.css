@@ -64,18 +64,18 @@
     padding: 100px;
 }
 
-.post-preview h2{
+.card-body h2{
     font-weight: 800;
     line-height: 1;
-
+    color: darkred;
 }
-.post-preview h3{ 
+.card h3{ 
     font-weight: 300;
     font-size: 20px;
     font-family: "Open Sans";
 }
 
-.post-preview p{ 
+.card p{ 
     font-size: 18px;
     font-style: italic;
     margin-top: 0;
