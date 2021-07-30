@@ -1,11 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for  # noqa
+from flask import Flask, render_template, request, redirect, url_for, flash  # noqa
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+from flask_login import login_user, logout_user, login_required
 import datetime
 
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
-
+bcrypt = Bcrypt(app)
 
 # configrations of our DataBase with MySQL.
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:''@localhost/codingThunder'
@@ -24,6 +26,7 @@ class User(db.Model):
     fullName = db.Column(db.String(80))
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(100))
     user_posts = db.relationship(
         "Post",
         backref='user',
@@ -50,6 +53,7 @@ class Post(db.Model):
     def __init__(self, data):
         """Here we create constructor of this class."""
         self.post_title = data['post_title']
+        self.post_subtitle = data['post_subtitle']
         self.post_content = data['post_content']
         self.user_id = data['user_id']
 
@@ -72,6 +76,7 @@ def create_post():
     if request.method == 'POST':
         data = {
             'post_title': request.form['title'],
+            'post_subtitle': request.form['subtitle'],
             'post_content': request.form['content'],
             'user_id': 1}
         post_object = Post(data)
@@ -114,7 +119,6 @@ def delete(post_id):
     db.session.delete(user_post_object)
     db.session.commit()
     return redirect(url_for('user_post', user_id=user_post_object.user_id))
-    # return render_template('/')
 
 
 @app.route('/about')
@@ -123,13 +127,31 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/signUp')
+@app.route('/signUp', methods=['GET', 'POST'])
 def signUp():
     """Show signUP page."""
+    if request.method == 'POST':
+        fullName = request.form['name']
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+
+        # if this returns a user, then the email already exists in database
+        user = User.query.filter_by(email=email).first()
+
+        # if a user is found, we want to redirect back to signup page so user can try again
+        if user:
+            return redirect(url_for('signUp'))
+
+        # create new user with the form data. Hash the password so plaintext version isn't saved.
+        new_user_object = User(fullName=fullName, email=email, username=username, password=bcrypt.generate_password_hash(password))
+        db.session.add(new_user_object)
+        db.session.commit()
+        return redirect(url_for('login'))
     return render_template('signUp.html')
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     """Show the Login Page."""
     return render_template('logIn.html')
