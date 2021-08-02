@@ -1,3 +1,4 @@
 myEnv/
 requirement.txt
-__pycache__/
+__pycache__/app.cpython-36.pyc
+flask_session/

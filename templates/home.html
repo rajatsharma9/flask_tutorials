@@ -9,7 +9,20 @@
 
 {% block content %}
   <section class="features">
+   <!--  {% for message in get_flashed_messages() %}
+      {% if message %}
+        <div class="alert alert-warning">
+          <button type="button"class="close"data-dismiss="alert">x</button>
+          {{ message }}
+        </div>
+      {% endif%}
+    {% endfor %} -->
     <h1> Featured Destination</h1>
+    <!-- {% if session.user %}
+      You are Register {{ session.user }} <a href="/logout">logout</a>.
+   {% else %}
+      You are not Register. <a href="/login">login</a>.
+   {% endif %} -->
   <div class="container"></div>
 {% endblock %}
 
