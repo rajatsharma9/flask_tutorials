@@ -13,19 +13,19 @@
     <div class="row">
       <div class="container my-3">
         <div class="col-md-1 col-lg-6 col-xl-4" style="margin-left: 34%;">
-          <form action="/create_post" method="POST">
+          <form action="/login" method="POST">
             <div class="mb-3">
-              <label for="title" class="form-label">Username</label>
-              <input type="text" class="form-control" placeholder="Enter Username or Email" name="username" id="username"> 
+              <label for="title" class="form-label">Email</label>
+              <input type="emailHelp" class="form-control" placeholder="Enter Email" name="email" id="email"> 
             </div>
             <div class="mb-3">
               <label for="content" class="form-label">Password</label>
-              <input type="text" class="form-control" placeholder="Enter Password" name="password" id="password">
+              <input type="password" class="form-control" placeholder="Enter Password" name="password" id="password">
             </div>
             <a href="#!" class="text-body">Forgot password?</a>
            
             <div class="text-center text-lg-start mt-4 pt-2">
-              <button type="button" class="btn btn-primary btn-lg"style="padding-left: 2.5rem; padding-right: 2.5rem;">LOGIN</button>
+              <button type="submit"class="btn btn-primary btn-lg"style="padding-left: 2.5rem; padding-right: 2.5rem;">LOGIN</button>
               <p class="small fw-bold mt-2 pt-1 mb-0">Do you have an account?<a href="/signUp"class="link-danger">SignUp</a></p>
             </div>
           </form>
