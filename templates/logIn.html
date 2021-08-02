@@ -9,6 +9,14 @@
 
 {% block content %}
   <section class="features">
+    {% for message in get_flashed_messages() %}
+      {% if message %}
+        <div class="alert alert-warning">
+          <button type="button"class="close"data-dismiss="alert">x</button>
+          {{ message }}
+        </div>
+      {% endif%}
+    {% endfor %}
     <h1>LogIn</h1>
     <div class="row">
       <div class="container my-3">

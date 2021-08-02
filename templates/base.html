@@ -31,18 +31,28 @@
       <li class="nav-item">
         <a class="nav-link" href="#!">About</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="/show_all_post/1">All Post</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/create_post">Add Post</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/signUp">SignUp</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/login">LogIn</a>
-      </li>
+      </li> -->
+      {% if session.user %}
+        <li class="nav-item">
+          <a class="nav-link" href="/create_post">Add Post</a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="/signUp">SignUp</a>
+        </li>
+      {% endif %}
+      
+      {% if session.user %}
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">LogOut</a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="/login">LogIn</a>
+        </li>
+      {% endif %}
 
     </ul>
 

@@ -9,11 +9,24 @@
 
 {% block content %}
   <section class="features">
+    {% for message in get_flashed_messages() %}
+      {% if message %}
+        <div class="alert alert-warning">
+        <button
+        type="button"
+        class="close"
+        data-dismiss="alert">
+        x
+        </button>
+        {{ message }}
+        </div>
+      {% endif%}
+    {% endfor %}
     <h1>Sign Up </h1>
     <div class="row">
       <div class="container my-3">
         <div class="col-md-8 col-lg-6 col-xl-4" style="margin-left: 34%;">
-          <form action="/create_post" method="POST">
+          <form action="/signUp" method="POST">
             <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
               <p class="lead fw-normal mb-0 me-3">Sign up with:</p>
             </div>
